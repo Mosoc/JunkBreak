@@ -1,1 +1,34 @@
+<div>
 <h1>Operation List</h1>
+
+<div class = "operation">
+
+    <%= link_to("New Operation", new_operation_path, class: "btn btn-default pull-right") %>
+
+</div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      
+      <tbody>
+      <% @operations.each do |operation| %>
+        <tr>
+        <td>#</td>
+        <td> <%= link_to(operation.title, operation_path(operation)) %></td>
+        <td> <%= operation.description %></td>
+        <td>
+             <%= link_to("edit", edit_operation_path(operation), class: "btn btn-sm btn-success") %>
+              <%= link_to("delete", operation_path(operation), class: "btn btn-sm btn-primary", method: :delete, data: {confirm: "OK?"}) %>
+        </td>    
+        </tr>    
+      <% end %>
+      </tbody>
+    </table>      
+          
+</div>
