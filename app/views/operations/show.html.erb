@@ -1,7 +1,33 @@
 <div class="col-md-12">
   <div class="operation">
     <%= link_to("Edit", edit_operation_path(@operation), class: "btn btn-primary pull-right")%>
+    <%= link_to("New Card", new_operation_card_path(@operation), class: "btn btn-warning pull-right") %>
   </div>
   <h2><%= @operation.title %></h2>
   <p><%= @operation.description %></p>
+  
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cards.each do |card| %>
+        <tr>
+          <td><%= card.content %></td>
+          <td>
+            <%= link_to("Edit", edit_operation_card_path(card.operation, card),
+                        class: "btn btn-default btn-xs")%>
+            <%= link_to("Delete", operation_card_path(card.operation, card),
+                        class: "btn btn-default btn-xs ", method: :delete, 
+                        data: { confirm: "Sure?" } )%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  
 </div>

@@ -7,7 +7,7 @@ class OperationsController < ApplicationController
   end
   
   def show
-    
+    @cards = @operation.cards
   end
 
   def new

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
-  resources :operations
+  
   root 'operations#index'
+  
+  resources :operations do
+    resources :cards
+  end
 end
